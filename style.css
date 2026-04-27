@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background: #05080f;
+  font-family: 'Orbitron', sans-serif;
+}
+
+body.starmap {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+body.starmap.h1 {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 1rem;
+    letter-spacing: 0.4rem;
+    color: #ffe566;
+    text-shadow: 0 0 18px rgba(255,229,102,0.5);
+}
+
+#map {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+}
+
+#lanes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    pointer-events: none;
+}
+
+.planet {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+    text-decoration: none;
+}
+
+.planet:hover {
+    transform: translate(-50%, -50%) scale(1.4);
+}
+
+.planet .orb {
+    border-radius: 50%;
+    box-shadow: 0 0 14px var(--glow);
+    object-fit: cover;
+    display: block;
+}
+
+.planet .name {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--glow);
+    opacity: 0.85;
+    white-space: nowrap;
+}
+
+/* Coruscant */
+
+#coruscant {
+    top: 50%;
+    left: 50%;
+    --glow: #ffa040;
+}
+
+#coruscant .orb {
+    width: 150px;
+    height: 150px;
+}
+
+/* Tatooine */
+
+#tatooine {
+    top: 30%;
+    left: 70%;
+    --glow: #ff6b35;
+}
+
+#tatooine .orb {
+    width: 100px;
+    height: 100px;
+}
+
+/* Naboo */
+
+#naboo {
+    top: 70%;
+    left: 30%;
+    --glow: #4ecdc4;
+}
+
+#naboo .orb {
+    width: 100px;
+    height: 100px;
+}
+
+/* Hoth */
+
+#hoth {
+    top: 20%;
+    left: 50%;
+    --glow: #a0d8ef;
+}
+
+#hoth .orb {
+    width: 80px;
+    height: 80px;
+}
+
+.back, #contact-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ffe566;
+    color: #ffe566;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    background: transparent;
+    align-self: flex-start;
+}
+
+.back:hover, #contact-btn:hover {
+    background: rgba(255, 229, 102, 0.08);
+    filter: brightness(1.4) drop-shadow(0 0 6px rgba(255, 229, 102, 0.5));
+}
+
+body.planet-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px;
+    gap: 32px;
+}
+
+body.planet-page h1 {
+    font-size: 2rem;
+    letter-spacing: 0.35rem;
+    color: var(--glow);
+    text-shadow: 0 0 24px var(--glow);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255,255,255,0.05);
+}
+
+.card {
+    background: #05080f;
+    padding: 28px 32px;
+}
+
+.card-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--glow);
+    margin-bottom: 14px;
+}
+
+.card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card li {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(200,216,240,0.7);
+    padding-left: 12px;
+    border-left: 2px solid rgba(255,255,255,0.08);
+}
+
+.card p {
+    font-size: 0.72rem;
+    letter-spacing: 0.5em;
+    line-height: 1.9;
+    color: rgba(200,216,240,0.6);
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stats-table th,
+.stats-table td {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-align: left;
+}
+
+.stats-table th {
+    color: var(--glow);
+    width: 35%;
+}
+
+.stats-table td {
+    color: rgba(200,216,240,0.7);
+}
+
+.card-planet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contact-btn {
+    position: fixed;
+    bottom: 36px;
+    right: 24px;
+    z-index: 200;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(200, 216, 240, 0.35);
+    padding: 8px;
+    z-index: 100;
+}
+
+.card-planet .sphere {
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 28px var(--glow);
+    object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+    body.planet-page h1 { font-size: 1.5rem; }
+    .card { padding: 20px 24px; }
+}
+
+@media (max-width: 600px) {
+    body.planet-page { 
+        padding: 24px 12px; 
+        gap: 16px; 
+    }
+
+    body.planet-page h1 { 
+        font-size: 1.1rem; 
+    }
+
+    .card { 
+        padding: 16px; 
+    }
+
+    .cards { 
+        grid-template-columns: 1fr; 
+    }
+
+    #contact-btn { 
+        bottom: 28px; 
+        right: 12px; 
+    }
+}
